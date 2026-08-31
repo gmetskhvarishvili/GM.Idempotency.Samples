@@ -1,0 +1,20 @@
+<Project>
+
+  <!--
+    Shared build settings for the GM.Idempotency sample solution. The samples are executable
+    documentation, so they are held to the same engineering baseline as the packages they
+    demonstrate: latest analyzers + code style, with warnings treated as errors.
+  -->
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+</Project>

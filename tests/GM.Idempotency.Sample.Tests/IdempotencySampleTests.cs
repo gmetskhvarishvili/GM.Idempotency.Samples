@@ -18,7 +18,7 @@ public class IdempotencySampleTests(WebApplicationFactory<Program> factory) : IC
 
         async Task<(HttpResponseMessage Response, JsonElement Body)> PostOrder()
         {
-            var msg = new HttpRequestMessage(HttpMethod.Post, "/orders")
+            var msg = new HttpRequestMessage(HttpMethod.Post, "/api/v1/orders")
             {
                 Content = JsonContent.Create(new { item = "widget", quantity = 3 }),
             };
@@ -52,7 +52,7 @@ public class IdempotencySampleTests(WebApplicationFactory<Program> factory) : IC
 
         async Task<string?> Create(string key)
         {
-            var msg = new HttpRequestMessage(HttpMethod.Post, "/orders")
+            var msg = new HttpRequestMessage(HttpMethod.Post, "/api/v1/orders")
             {
                 Content = JsonContent.Create(new { item = "gadget", quantity = 1 }),
             };
@@ -78,7 +78,7 @@ public class IdempotencySampleTests(WebApplicationFactory<Program> factory) : IC
 
         async Task<JsonElement> Deliver()
         {
-            var response = await client.PostAsJsonAsync("/payments/deliver", payload);
+            var response = await client.PostAsJsonAsync("/api/v1/payments/deliver", payload);
             response.EnsureSuccessStatusCode();
             using var doc = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
             return doc.RootElement.Clone();
